@@ -46,7 +46,7 @@ function generate(){
         "peliasIndexOneEdgeGram" : {
           "type": "custom",
           "tokenizer" : "peliasTokenizer",
-          "char_filter" : ["punctuation", "nfkc_normalizer"],
+          "char_filter" : ["ampersand_splitter", "punctuation", "nfkc_normalizer"],
           "filter": [
             "lowercase",
             "trim",
@@ -64,7 +64,7 @@ function generate(){
         "peliasQuery": {
           "type": "custom",
           "tokenizer": "peliasTokenizer",
-          "char_filter": ["punctuation", "nfkc_normalizer"],
+          "char_filter": ["ampersand_splitter", "punctuation", "nfkc_normalizer"],
           "filter": [
             "lowercase",
             "trim",
@@ -78,7 +78,7 @@ function generate(){
         "peliasPhrase": {
           "type": "custom",
           "tokenizer":"peliasTokenizer",
-          "char_filter" : ["punctuation", "nfkc_normalizer"],
+          "char_filter" : ["ampersand_splitter", "punctuation", "nfkc_normalizer"],
           "filter": [
             "lowercase",
             "trim",
@@ -203,6 +203,11 @@ function generate(){
         // more generated below
       },
       "char_filter": {
+        "ampersand_splitter": {
+          "type": "pattern_replace",
+          "pattern": "&",
+          "replacement": " and "
+        },
         "punctuation" : {
           "type" : "mapping",
           "mappings" : punctuation.blacklist.map(function(c){

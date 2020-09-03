@@ -43,6 +43,7 @@
           "type": "custom",
           "tokenizer": "peliasTokenizer",
           "char_filter": [
+            "ampersand_splitter",
             "punctuation",
             "nfkc_normalizer"
           ],
@@ -64,6 +65,7 @@
           "type": "custom",
           "tokenizer": "peliasTokenizer",
           "char_filter": [
+            "ampersand_splitter",
             "punctuation",
             "nfkc_normalizer"
           ],
@@ -81,6 +83,7 @@
           "type": "custom",
           "tokenizer": "peliasTokenizer",
           "char_filter": [
+            "ampersand_splitter",
             "punctuation",
             "nfkc_normalizer"
           ],
@@ -863,7 +866,8 @@
           "type": "synonym",
           "synonyms": [
             "&,and",
-            "&,und"
+            "&,und",
+            "and,und"
           ]
         },
         "synonyms/punctuation/multiword": {
@@ -1694,6 +1698,11 @@
         }
       },
       "char_filter": {
+        "ampersand_splitter": {
+          "type": "pattern_replace",
+          "pattern": "&",
+          "replacement": " and "
+        },
         "punctuation": {
           "type": "mapping",
           "mappings": [

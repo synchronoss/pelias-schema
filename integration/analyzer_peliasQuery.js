@@ -33,6 +33,12 @@ module.exports.tests.analyze = function(test, common){
 
     // remove punctuation (handled by the char_filter)
     assertAnalysis( 'punctuation', punctuation.all.join(''), ['&'] );
+    
+    // all ands do the same thing
+
+    assertAnalysis( 'ampersand_splitter', 'A&P Deli', ['A', 'and', 'P', 'Deli'])
+    assertAnalysis( 'ampersand_splitter', 'A & P Deli', ['A', 'and', 'P', 'Deli'])
+    assertAnalysis( 'ampersand_splitter', 'A and P Deli', ['A', 'and', 'P', 'Deli'])
 
     suite.run( t.end );
   });

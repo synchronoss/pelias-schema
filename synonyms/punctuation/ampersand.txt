@@ -20,3 +20,6 @@
 
 # German
 &, und
+
+# since we are turning all ampersands into english "and"s in the index
+and, und
