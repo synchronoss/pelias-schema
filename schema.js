@@ -1,5 +1,5 @@
 // The shapeType must be defined as either 'shape' or 'polygon'
-global.shapeType = "shape";
+global.shapeType = "polygon";
 
 const schema = {
   settings: require('./settings')(),
